@@ -4,16 +4,16 @@ import { ScrollViewProps, StyleSheet } from "react-native";
 import Reanimated, {
   and,
   call,
-
   eq,
   Extrapolate,
   interpolate,
   onChange,
+  SpringUtils,
   useCode
 } from "react-native-reanimated";
 import {
   onScrollEvent,
-  timing,
+  spring,
   useValue
 } from "react-native-redash/lib/module/v1";
 import { View } from "../components/Themed";
@@ -115,9 +115,14 @@ const LottieIndicatorScrollView: React.FC<LottieIndicatorScrollViewProps> = ({
     });
   }, [loading]);
 
-  const paddingTop = timing({
+  const paddingTop = spring({
     from: INDICATOR_HEIGHT,
     to: 0,
+    config: SpringUtils.makeConfigFromBouncinessAndSpeed({
+      ...SpringUtils.makeDefaultConfig(),
+      bounciness: 0,
+      speed: 16,
+    }),
   });
 
   useCode(() => {

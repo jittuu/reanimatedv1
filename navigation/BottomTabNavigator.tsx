@@ -4,12 +4,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import Swiper from '../ImageGallery/Swiper';
+import WhatsApp from '../ImageGallery/WhatsApp';
 import PullToRefreshScreen from '../screens/PullToRefreshScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
-
-
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -62,6 +62,11 @@ function TabOneNavigator() {
         name="TabOneScreen"
         component={TabOneScreen}
         options={{ headerTitle: 'Tab One Title' }}
+      />
+      <TabOneStack.Screen
+        name="ImageSwiper"
+        component={Swiper}
+        options={{ headerTitle: 'Image Swiper' }}
       />
     </TabOneStack.Navigator>
   );

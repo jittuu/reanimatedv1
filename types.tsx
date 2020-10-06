@@ -1,6 +1,7 @@
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
+  WhatsApp: undefined;
 };
 
 export type BottomTabParamList = {
@@ -11,6 +12,7 @@ export type BottomTabParamList = {
 
 export type TabOneParamList = {
   TabOneScreen: undefined;
+  ImageSwiper: undefined;
 };
 
 export type TabTwoParamList = {

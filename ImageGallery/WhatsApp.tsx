@@ -67,10 +67,10 @@ const styles = StyleSheet.create({
 });
 
 const WhatsApp = () => {
-  //const position = 1;
-  const index = useValue(0);
+  const startIndex = 1;
+  const index = useValue(startIndex);
 
-  // const initialX = width * -position;
+  const startX = width * -startIndex;
 
   const pinchRef = useRef<PinchGestureHandler>(null);
   const panRef = useRef<PanGestureHandler>(null);
@@ -82,9 +82,9 @@ const WhatsApp = () => {
   const translate = vec.createValue(0, 0);
 
   const clock = useClock();
-  const offsetX = useValue(0);
+  const offsetX = useValue(startX);
   const translationX = useValue(0);
-  const translateX = useValue(0);
+  const translateX = useValue(startX);
 
   const minVec = vec.min(vec.multiply(-0.5, CANVAS, sub(scale, 1)), 0);
   const maxVec = vec.max(vec.minus(minVec), 0);

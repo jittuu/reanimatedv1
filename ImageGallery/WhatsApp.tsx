@@ -67,10 +67,10 @@ const styles = StyleSheet.create({
 });
 
 const WhatsApp = () => {
-  const position = 1;
-  const index = useValue(position);
+  //const position = 1;
+  const index = useValue(0);
 
-  const initialX = width * -position;
+  // const initialX = width * -position;
 
   const pinchRef = useRef<PinchGestureHandler>(null);
   const panRef = useRef<PanGestureHandler>(null);
@@ -82,9 +82,9 @@ const WhatsApp = () => {
   const translate = vec.createValue(0, 0);
 
   const clock = useClock();
-  const offsetX = useValue(initialX);
-  const translationX = useValue(initialX);
-  const translateX = useValue(initialX);
+  const offsetX = useValue(0);
+  const translationX = useValue(0);
+  const translateX = useValue(0);
 
   const minVec = vec.min(vec.multiply(-0.5, CANVAS, sub(scale, 1)), 0);
   const maxVec = vec.max(vec.minus(minVec), 0);
@@ -105,11 +105,17 @@ const WhatsApp = () => {
       cond(and(eq(pan.state, State.END), neq(translationX, 0)), [
         set(translateX, timing({ clock, from: translateX, to: snapTo })),
         set(offsetX, translateX),
-        cond(not(clockRunning(clock)), [
-          vec.set(translate, 0),
-          set(scale, 1),
-          set(index, floor(divide(translateX, -width))),
-        ]),
+        cond(
+          and(
+            not(clockRunning(clock)),
+            neq(index, floor(divide(translateX, -width)))
+          ),
+          [
+            vec.set(translate, 0),
+            set(scale, 1),
+            set(index, floor(divide(translateX, -width))),
+          ]
+        ),
       ]),
     ],
     [index]
@@ -189,16 +195,3 @@ const WhatsApp = () => {
 };
 
 export default WhatsApp;
-
-/*
-size: M,L
-color: Red, Blue
-design: 1, 2
-
-{
-[Red1]: [M,L]
-[Red2]: [M, L]
-[Blue1]: [M, L]
-[Blue2]: [M, L]
-}
-*/

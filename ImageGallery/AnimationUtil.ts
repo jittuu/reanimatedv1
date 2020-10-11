@@ -27,6 +27,7 @@ import {
   pinchActive,
   pinchBegan,
   pinchGestureHandler,
+  timing,
   useValue,
   vec,
   Vector
@@ -137,7 +138,10 @@ export const usePinch = ({
         ),
         [
           vec.set(offset, vec.add(offset, translation)),
-          set(scaleOffset, scale),
+          set(
+            scaleOffset,
+            cond(lessThan(scale, 1), timing({ from: scale, to: 1 }), scale)
+          ),
           set(pinch.scale, 1),
           vec.set(translation, 0),
           vec.set(pinch.focal, 0),

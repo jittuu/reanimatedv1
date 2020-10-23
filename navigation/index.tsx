@@ -4,6 +4,7 @@ import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 import WhatsApp from '../ImageGallery/WhatsApp';
 import NotFoundScreen from '../screens/NotFoundScreen';
+import Selectable from '../Selectable/SelectableScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -34,6 +35,11 @@ function RootNavigator() {
         name="WhatsApp"
         component={WhatsApp}
         options={{ headerTitle: 'WhatsApp Gallery' }}
+      />
+      <Stack.Screen
+        name="Selectable"
+        component={Selectable}
+        options={{ headerTitle: 'Selectable', headerShown: true }}
       />
     </Stack.Navigator>
   );

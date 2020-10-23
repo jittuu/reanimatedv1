@@ -2,6 +2,7 @@ export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
   WhatsApp: undefined;
+  Selectable: undefined;
 };
 
 export type BottomTabParamList = {

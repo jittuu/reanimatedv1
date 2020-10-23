@@ -11,6 +11,7 @@ export default function TabOneScreen() {
       <LoopingDot />
       <Button title="Image Swiper" onPress={() => navigate("ImageSwiper")} />
       <Button title="WhatsApp Gallery" onPress={() => navigate("WhatsApp")} />
+      <Button title="Selectable" onPress={() => navigate("Selectable")} />
     </View>
   );
 }
